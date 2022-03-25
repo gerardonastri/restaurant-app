@@ -8,9 +8,6 @@ export default async function handler(req, res) {
   dbConnect();
 
   if (method === "GET") {
-    if(!token || token !== process.env.TOKEN){
-      return res.status(401).json('You are not allowed')
-    }
     try {
       const products = await Product.find();
       res.status(200).json(products);
